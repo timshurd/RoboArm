@@ -1,0 +1,25 @@
+RoboArm	KEYWORD1
+getRange	KEYWORD2
+rotate	KEYWORD2
+rotateTrue	KEYWORD2
+grasp	KEYWORD2
+releaseGrip	KEYWORD2
+getState	KEYWORD2
+maxLift	KEYWORD2
+polarToCart	KEYWORD2
+cartToPolar	KEYWORD2
+spin	KEYWORD2
+spinTrue	KEYWORD2
+maxLiftC	KEYWORD2
+scan	KEYWORD2
+reachTo	KEYWORD2
+raise	KEYWORD2
+scanMult	KEYWORD2
+graspAt	KEYWORD2
+graspLight	KEYWORD2
+throwTo	KEYWORD2
+throwObject	KEYWORD2
+gripClosed	KEYWORD2
+gripOpen	KEYWORD2
+rArm	KEYWORD2
+
