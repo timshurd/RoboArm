@@ -32,9 +32,7 @@ Component* should;	//a pointer that will be set to the should Component of the C
 Component* base;	//a pointer that will be set to the base Component of the CompList array
 Component* should0;	//a pointer that will be set to the second shoulder Component of the CompList array
 Component *compList; //a pointer that will be set to the start of the list of all the components
-int compNum; //stores how many components are passed into the constructor
-float endPointR;	//stores the distance value of the end point of the arm
-float endPointT;	//stores the theta value of the end point of the arm
+
 
 
 // constructors
@@ -43,6 +41,9 @@ RoboArm(Component shouldx, Component gripx);
 RoboArm(Component shouldx, Component elbox, Component wristx,Component wtwistx, Component gripx, Component basex, bool should2x, bool rangefinder, bool twistFunc, Component shouldx2);
 //RoboArm(Component elbox, Component wristx, Component gripx);
 //RoboArm(Component shouldx, Component elbox, Component wristx, Component gripx);
+
+//deconstrucrtor
+~RoboArm();
 
 
 // functions
@@ -65,11 +66,11 @@ int grasp(int width);
 int spin(int x); // calls rotate but specifies whatever servo the wrist rotate is specified at
 int spinTrue(int x); //rotate wrist to specified angle, regardless of current position
 float maxLiftC();// will calculate the max lift of the arm at its current location.
-float rArm(int x); //returns r coord of end of arm position, but changes the endpoint[r,theta] as well
+float rArm(float *x, float *y, float *r, float *t); //returns r coord of end of arm position, but changes the endpoint[r,theta] as well
 
 //tier three  (uses two or more tier one functions or at least a tier two)
 int scan(); //returns the location data of the closest object it finds
-int reachTo(int r, int theta, int phi); //reaches arm so that gripper is right in front of location
+int reachTo(float r, float theta, float phi); //reaches arm so that gripper is right in front of location
 
 
 //tier four    (requires tier three functions to work)
@@ -86,15 +87,25 @@ int throwObject(int base, int should, int elbow, int wrist, int x, int y, int z)
 
 
 
+float cosLaw(float a,float b, float c);
+
+
+
 private:
 bool should2; //will be true if there are two shoulder servos acting together
 bool twistFunc; //will be true if there is a gripper twist capability on the arm.
 bool rangefinder; // will be true if there is a rangefinder component
-int coordinates[3]; //stores coordinates of arm end position in spherical coordinates
+int compNum; //stores how many components are passed into the constructor
+ float *X;	//stores x value of gripper/end point of arm
+ float *Y;	//stores Y value of gripper
+ float *R;	//stores the distance value of the end point of the arm
+ float *T;	//stores the theta value of the end point of the arm
+ float *P;	//stores value of phi which is base rotation
 
-
-
-
+void rs(float tr, float tt, float *a, float *b);
+float srminf();
+int findElbow(float rs,float ts,int wr);
+int multiMap(int val, int* _in, int* _out, uint8_t size);
 void rangeSetup(int x, int y, int z); //sets position of rangefinder relative to base of arm. x is the distance forward from the base, y is any offset side to side (with right being positive)instead of being directly in line with the arm, z is the vertical difference from the base servo(positive is up).
 
 

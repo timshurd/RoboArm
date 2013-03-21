@@ -22,4 +22,4 @@ throwObject	KEYWORD2
 gripClosed	KEYWORD2
 gripOpen	KEYWORD2
 rArm	KEYWORD2
-
+cosLaw	KEYWORD2
